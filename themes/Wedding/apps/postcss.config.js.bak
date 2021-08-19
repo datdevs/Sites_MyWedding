@@ -1,0 +1,17 @@
+const purgecss = require('@fullhuman/postcss-purgecss')
+
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    purgecss({
+      content: ['../blocks/*', '../layout/*', '../modules/**/*'],
+      // keyframes: true,
+      safelist: {
+        standard: [/^is-invalid/, /^active/, /^offcanvas/, /^item-animate/],
+      },
+    }),
+    require('postcss-preset-env')({
+      stage: 4,
+    }),
+  ],
+}
